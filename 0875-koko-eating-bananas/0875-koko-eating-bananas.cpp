@@ -3,7 +3,7 @@ public:
     int findMax(vector<int>& piles) {
         int maxi = INT_MIN;
         for (int i = 0; i < piles.size(); i++) {
-            maxi = max(maxi, piles[i]); // Fixed shadowing issue
+            maxi = max(maxi, piles[i]); 
         }
         return maxi;
     }
