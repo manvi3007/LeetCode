@@ -1,47 +1,32 @@
 class Solution {
 public:
-    int subs(vector<int>& num, int j){
-        int ment = 1;
-        int element = 0;
-        int n = num.size();
-        for (int i =0;i<n;i++){
-            if (num[i]+element <= j){
-                element += num[i];
+    int count (vector<int>& nums, int k){
+        int way = 1;
+        int sum = 0;
+        for (int i = 0; i < nums.size();i++){
+            if(nums[i]+sum <= k){
+                sum += nums[i];
             }
-            else {
-                ment ++;
-                element = num[i];
+            else{
+                way++;
+                sum = nums[i];
             }
         }
-        return ment;
+        return way;
     }
-    int findarr(vector<int>& nus, int n,int m){
-        if (m>n){
-            return -1;
-        }
-        int l = nus.size();
-        int maxi = INT_MIN;
-        int sum =0;
-        for (int i = 0;i<n;i++){
-            maxi = max(maxi,nus[i]);
-            sum += nus[i];
-
-        }
-        int low = maxi;
-        int high = sum;
+    int splitArray(vector<int>& nums, int k) {
+        int low = *max_element(nums.begin(),nums.end());
+        int high = accumulate(nums.begin(),nums.end(),0);
         while(low<=high){
-            int mid = (low+high)/2;
-            int fn = subs(nus,mid);
-            if (fn>m){
-                low = mid+1;
+            int mid = low + (high - low)/2;
+            int cuu = count(nums,mid);
+            if(cuu > k){
+                low = mid +1;
             }
-            else {
-                high = mid-1;
+            else{
+                high = mid -1;
             }
         }
         return low;
-    }
-    int splitArray(vector<int>& nums, int k) {
-       return findarr(nums,nums.size(),k);
     }
 };
