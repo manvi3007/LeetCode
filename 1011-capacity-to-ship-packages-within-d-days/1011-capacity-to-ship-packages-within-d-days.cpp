@@ -1,36 +1,36 @@
 class Solution {
 public:
-    int res (vector<int>& w, int cap){
+    int cal (vector<int>&ans, int cap){
+        int day = 1;
         int load = 0;
-        int days = 1;
-        for (int i = 0; i < w.size();i++){
-            if(load+w[i] > cap){
-                days+=1;
-                load=w[i];
+        int n = ans.size();
+        for (int i = 0; i<n; i++){
+            if(load + ans[i] > cap){
+                day++;
+                load = ans[i];
             }
             else{
-                load += w[i];
+                load += ans[i];
             }
         }
-        return days;
+        return day;
     }
     int shipWithinDays(vector<int>& weights, int days) {
         int low = *max_element(weights.begin(),weights.end());
-        int sum = 0;
-        for (int i = 0; i < weights.size();i++){
-            sum += weights[i];
-        }
-        int high = sum;
-        while(low<=high){
+        int high = accumulate(weights.begin(),weights.end(),0);
+        int ans = 0;
+        while(low <= high){
             int mid = low + (high - low)/2;
-            int dd = res(weights,mid);
-            if(dd <= days){
-                high = mid - 1;
+            int d = cal(weights,mid);
+            if(d <= days){
+                ans = mid;
+                high = mid -1;
             }
             else{
                 low = mid +1;
             }
+
         }
-        return low;
+        return ans;
     }
 };
