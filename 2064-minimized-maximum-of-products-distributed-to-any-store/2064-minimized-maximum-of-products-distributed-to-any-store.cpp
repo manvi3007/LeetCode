@@ -1,28 +1,27 @@
 class Solution {
 public:
-    bool check(int n ,vector<int>& q, int x){
+    bool check(vector<int>& q, int n,int p ){
         int m = q.size();
-        int stores = 0;
-        for (int i = 0; i < m ; i++){
-            stores += ceil((double)q[i]/(double)x);
+        int sum = 0;
+        for (int i = 0; i < m; i++){
+            sum += ceil((double)q[i]/(double)n);
         }
-        return stores <= n;
+        return sum <= p;
     }
     int minimizedMaximum(int n, vector<int>& quantities) {
-        int low = 1;
+        int low = 0;
         int high = *max_element(quantities.begin(),quantities.end());
-        int ans = 0;
-        while(low<=high){
+        int res = quantities.size();
+        while (low <= high){
             int mid = low + (high - low)/2;
-            if(check(n,quantities,mid)){
-                ans = mid;
+            if(check(quantities,mid,n)){
+                res = mid;
                 high = mid -1;
             }
             else{
                 low = mid +1;
             }
-
         }
-        return ans;
+        return res;
     }
 };
