@@ -1,32 +1,40 @@
 class Solution {
 public:
-    int count (vector<int>& nums, int k){
-        int way = 1;
-        int sum = 0;
-        for (int i = 0; i < nums.size();i++){
-            if(nums[i]+sum <= k){
-                sum += nums[i];
-            }
-            else{
-                way++;
-                sum = nums[i];
-            }
-        }
-        return way;
-    }
     int splitArray(vector<int>& nums, int k) {
         int low = *max_element(nums.begin(),nums.end());
         int high = accumulate(nums.begin(),nums.end(),0);
-        while(low<=high){
+        int res = high;
+
+        while(low <= high){
             int mid = low + (high - low)/2;
-            int cuu = count(nums,mid);
-            if(cuu > k){
-                low = mid +1;
+
+            if (ans(nums,k,mid)){
+                res = mid;
+                high = mid - 1;
+
             }
             else{
-                high = mid -1;
+                low = mid +1;
             }
         }
-        return low;
+        return res;
+    }
+
+    bool ans(vector<int>num,int k, int lar){
+        int sub = 1;
+        int sum = 0;
+        for (int i = 0; i < num.size();i++){
+            sum += num[i];
+
+            if(sum > lar){
+                sub++;
+                if(sub > k){
+                    return 0;
+                }
+                sum = num[i];
+            }
+        }
+        return true;
+
     }
 };
