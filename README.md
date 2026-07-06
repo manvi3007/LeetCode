@@ -5,8 +5,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/manvi3007/LeetCode/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [2460-apply-operations-to-an-array](https://github.com/manvi3007/LeetCode/tree/master/2460-apply-operations-to-an-array) |
 ## Two Pointers
 |  |
 | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/manvi3007/LeetCode/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [2460-apply-operations-to-an-array](https://github.com/manvi3007/LeetCode/tree/master/2460-apply-operations-to-an-array) |
+## Simulation
+|  |
+| ------- |
+| [2460-apply-operations-to-an-array](https://github.com/manvi3007/LeetCode/tree/master/2460-apply-operations-to-an-array) |
 <!---LeetCode Topics End-->
